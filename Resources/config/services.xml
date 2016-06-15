@@ -34,6 +34,7 @@
 
         <parameter key="lexik_mailer.form.handler.email.class">Lexik\Bundle\MailerBundle\Form\Handler\EmailFormHandler</parameter>
         <parameter key="lexik_mailer.form.handler.layout.class">Lexik\Bundle\MailerBundle\Form\Handler\LayoutFormHandler</parameter>
+        <parameter key="twig.class">Twig_Environment</parameter>
     </parameters>
 
     <services>
@@ -68,12 +69,12 @@
             <argument type="service" id="lexik_mailer.templating.loader_array" />
         </service>
 
-        <service id="lexik_mailer.message_preview_generator" class="%lexik_mailer.message_preview_penerator.class%" scope="prototype">
+        <service id="lexik_mailer.message_preview_generator" class="%lexik_mailer.message_preview_penerator.class%" shared="false">
             <argument type="service" id="lexik_mailer.message_renderer" />
             <argument>%lexik_mailer.admin_email%</argument>
         </service>
 
-        <service id="lexik_mailer.simple_pager" class="%lexik_mailer.simple_pager.class%" scope="prototype">
+        <service id="lexik_mailer.simple_pager" class="%lexik_mailer.simple_pager.class%" shared="false">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%lexik_mailer.list_items_per_page%</argument>
         </service>
@@ -134,4 +135,3 @@
         </service>
     </services>
 
-</container>
